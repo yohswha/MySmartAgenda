@@ -17,7 +17,7 @@ namespace MySmartAgenda.Models
         [Required]
         public string Password { get; set; }
         public int EventId { get; set; }
-        public List<Events> events { get; set; }
+        public ICollection<UserEvent> UserEvents { get; set; }
     }
 }
 
