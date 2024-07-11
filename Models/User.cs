@@ -11,7 +11,7 @@ namespace MySmartAgenda.Models
         public string Name { get; set; }
         [Required]
         public string LastName { get; set; }
-        public DateOnly DayOfBirth { get; set; }
+        public DateTime BirthDate { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]
