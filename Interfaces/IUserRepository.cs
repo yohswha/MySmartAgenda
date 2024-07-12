@@ -7,6 +7,7 @@ namespace MySmartAgenda.Interfaces
 	{
 		ICollection<User> GetUsers();
 		User GetSingleUser(int Id);
+		User GetUser(string0 Name);
 		User Put( int Id)
 		User UpdateUser( int Id);
 		User DeleteUser(int Id);	
