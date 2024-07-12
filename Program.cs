@@ -1,12 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MySmartAgenda;
 using MySmartAgenda.Data;
+using MySmartAgenda.Interfaces;
+using MySmartAgenda.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddTransient<Seed>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
