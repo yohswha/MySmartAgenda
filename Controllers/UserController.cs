@@ -19,13 +19,21 @@ namespace MySmartAgenda.Controllers
             _userRepository = userRepository;
         }
 
-        
-
         [HttpGet]
         [ProducesResponseType(200, Type =typeof(IEnumerable<User>))]
         public IActionResult GetUsers()
         {
             var user = _userRepository.GetUsers();
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+            return Ok(user);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(200, Type =typeof(IEnumerable<User>))]
+        public IActionResult GetSingleUser(int Id)
+        {
+            var user = _userRepository.GetSingleUser();
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(user);
