@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using MySmartAgenda.Dtos;
 using MySmartAgenda.Interfaces;
 using MySmartAgenda.Models;
 using MySmartAgenda.Repositories;
@@ -13,27 +15,29 @@ namespace MySmartAgenda.Controllers
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
         [ProducesResponseType(200, Type =typeof(IEnumerable<User>))]
         public IActionResult GetUsers()
         {
-            var user = _userRepository.GetUsers();
+            var user = _mapper.Map<List<UserDTO>>(_userRepository.GetUsers());
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(user);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{Id}")]
         [ProducesResponseType(200, Type =typeof(IEnumerable<User>))]
         public IActionResult GetSingleUser(int Id)
         {
-            var user = _userRepository.GetSingleUser();
+            var user =_mapper.Map<UserDTO> (_userRepository.GetSingleUser(Id));
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(user);
