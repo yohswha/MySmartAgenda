@@ -11,10 +11,7 @@ namespace MySmartAgenda.Models
         public DateTime CurrentDate { get; set; }
         public ICollection<UserEvent>? UserEvents{ get; set; }
 
-        public static implicit operator int(Events v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
 

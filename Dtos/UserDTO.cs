@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MySmartAgenda.Dtos
 {
+    //DTOs for user help us show necessary data only
 	public class UserDTO
 	{
         [Key]
